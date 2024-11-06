@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/exp")
 class ExpensesController(
-    val expensesService: ExpensesService
+    private val expensesService: ExpensesService
 ) {
     @GetMapping
     fun getAllExpenses(): List<Expenses>{

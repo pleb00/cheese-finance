@@ -1,19 +1,22 @@
 package com.pleb.cheese.expenses.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import com.pleb.cheese.user.model.User
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "expenses", schema = "cheese")
 data class Expenses(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     val id: Long,
 
-    @Column(name = "user_id")
-    val userId: String,
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    val user: User,
+
+//    @Column(name = "user_id")
+//    val userId: String,
 
     @Column(name = "name")
     val name: String,
